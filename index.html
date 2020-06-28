@@ -1,0 +1,547 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Technical Documentation</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <nav id="navbar">
+    <header>
+        <h1>React Documentation</h1>
+    </header>
+    <ul>
+      <li>
+        <a class="nav-link" href="#Introduction">Introduction</a> 
+      </li>
+      <li>
+        <a class="nav-link" href="#What_you_should_already_know">What you should already know</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Hello_World">Hello World</a>
+      </li>
+      <li>
+          <a class="nav-link" href="#JSX">JSX</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Rendering_Elements">Rendering Elements</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Components_and_Props">Components and Props</a>
+      </li>     
+      <li>
+        <a class="nav-link" href="#State_and_Lifecycle">State and Lifecycle</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Handling_Events">Handling Events</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Conditional_Rendering">Conditional Rendering</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Lists_and_Keys">Lists and Keys</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Forms">Forms</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Lifting_State_Up">Lifting State Up</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Composition_vs_Inheritance">Composition vs Inheritance</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Thinking_in_React">Thinking in React</a>
+      </li>
+     
+    </ul>
+  </nav>
+
+  <main id="main-doc">
+    <section id="Introduction"  class="main-section">
+      <header>
+        Introduction
+      </header>
+      <article>
+        <h3>What is React?</h3>
+        <p>React is a JavaScript library for building user interfaces.</p>
+
+        <h3>Advantages</h3>
+        <p><strong>Declarative:</strong> 
+          React makes it painless to create interactive UIs. Design simple views 
+          for each state in your application, and React will efficiently update 
+          and render just the right components when your data changes.
+          <br>
+          <em>
+            Declarative views make your code more predictable and easier to debug.
+          </em> 
+        </p>
+
+        <p><strong>Component-Based:</strong> 
+          Build encapsulated components that manage their own state, then compose them to make complex UIs.
+          <br>
+          <em>
+            Since component logic is written in JavaScript instead of templates, you can easily pass rich 
+            data through your app and keep state out of the DOM.
+          </em>
+        </p>
+
+        <p><strong>Learn Once, Write Anywhere:</strong> 
+          We don’t make assumptions about the rest of your 
+          technology stack, so you can develop new features in React without rewriting existing code.
+          <br>
+          <em>
+            React can also render on the server using Node and power mobile apps using React Native.
+          </em>
+        </p>
+
+
+      </article>
+    </section>
+
+
+    <section id="What_you_should_already_know" class="main-section">
+      <header>
+        What you should already know
+      </header>
+      <article>
+        <p>This guide assumes you have the following basic background:</p>
+        <ul>
+          <li>
+            A general understanding of the Internet and the World Wide Web (WWW).
+          </li>
+          <li>Good working knowledge of HyperText Markup Language (HTML) and Cascading Style sheet (CSS).</li>
+          <li>
+            Some programming experience. If you are new to programming, try one of
+            the tutorials linked on the main page about JavaScript.
+          </li>
+          <li>
+            Experience with JavaScript. Kwon the bases of the lenguaje and Object Oriented Programming.
+          </li>
+        </ul>
+      </article>
+    </section>
+
+
+    <section id="Hello_World" class="main-section">
+      <header>
+          Hello World
+      </header>
+      <article>
+        <h3>A Simple Component</h3>
+        <p>
+          React components implement a <strong>render()</strong>  method that takes input data and returns what to display. 
+          This example uses an XML-like syntax called JSX. Input data that is passed into the component 
+          can be accessed by <strong>render()</strong>  via <strong>this.props</strong>.
+        </p>
+        <code>
+          &nbsp;class HelloMessage extends React.Component { <br>
+          &nbsp;&nbsp;render() { <br>
+          &nbsp;&nbsp;&nbsp;return ( <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello {this.props.name} <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+          &nbsp;&nbsp;&nbsp;); <br>
+          &nbsp;&nbsp;} <br>
+          &nbsp;} <br>
+          
+          &nbsp;ReactDOM.render( <br>
+          &nbsp;&nbsp;&lt;HelloMessage name="Taylor" /&gt;, <br>
+          &nbsp;&nbsp;&nbsp;document.getElementById('hello-example') <br>
+          &nbsp;&nbsp;); <br>
+        </code>
+      </article>
+    </section>
+
+
+    <section id="JSX" class="main-section">
+      <header>
+        JSX
+      </header>
+      <article>
+        <h4>Consider this variable declaration</h4>
+        <code>
+          &nbsp;const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;
+        </code>
+        <p>This funny tag syntax is neither a string nor HTML.
+          <br>
+          It is called JSX, and it is a syntax extension to JavaScript. 
+          We recommend using it with React to describe what the UI should look like. 
+          JSX may remind you of a template language, but it comes with the full power of JavaScript.
+        </p>
+        <h3>Why JSX?</h3>
+        <p>
+          React embraces the fact that rendering logic is inherently coupled with other UI logic: 
+          how events are handled, how the state changes over time, and how the data is prepared for display.
+          <br>
+          Instead of artificially separating technologies by putting markup and logic in separate files, 
+          React separates concerns with loosely coupled units called “components” that contain both.
+           We will come back to components in a further section, but if you’re not yet comfortable 
+           putting markup in JS, this talk might convince you otherwise.
+        </p>
+
+      </article>
+    </section>
+
+
+    <section id="Rendering_Elements" class="main-section">
+      <header>
+        Rendering Elements
+      </header>
+      <article>
+        <p>Let’s say there is a &lt;div&gt; somewhere in your HTML file:</p>
+        <code>
+          &lt;div id="root"&gt;&lt;/div&gt;
+        </code>
+        <p>
+          We call this a “root” DOM node because everything inside it will be managed by React DOM.
+          <br>
+          Applications built with just React usually have a single root DOM node. If you are 
+          integrating React into an existing app, you may have as many isolated root DOM nodes as you like.
+          <br>
+          To render a React element into a root DOM node, pass both to <strong>ReactDOM.render()</strong>:
+        </p>
+
+        <code>
+          &nbsp;const element =  &lt;h1&gt;Hello, world &lt;/h1&gt;;
+          <br>
+          &nbsp;ReactDOM.render(element, document.getElementById('root'));
+        </code>
+
+      </article>
+    </section>
+
+    <section id="Components_and_Props" class="main-section">
+      <header>
+        Components and Props
+      </header>
+      <article>
+        <p>Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.</p>
+        <h3>Function and Class Components</h3>
+        <p>The simplest way to define a component is to write a JavaScript function:</p>
+        <code>
+          &nbsp;function Welcome(props) { <br>
+          &nbsp;&nbsp;return  &lt;h1&gt;Hello, {props.name} &lt;/h1&gt;; <br>
+          &nbsp;} <br>
+        </code>
+
+        <p>
+          This function is a valid React component because it accepts a single “props” (which stands for properties) 
+          object argument with data and returns a React element. We call such components “function components” because
+          they are literally JavaScript functions.
+          <br>
+          You can also use an ES6 class to define a component:
+        </p>
+
+        <code>
+          &nbsp;class Welcome extends React.Component { <br>
+          &nbsp;&nbsp;render() {  <br>
+          &nbsp;&nbsp;&nbsp;return  &lt;h1&gt;Hello, {this.props.name} &lt;/h1&gt;; <br>
+          &nbsp;&nbsp;} <br>
+          &nbsp;} <br>  
+        </code>
+
+        <p>The above two components are equivalent from React’s point of view.</p>
+
+      </article>
+    </section>
+
+    <section id="State_and_Lifecycle" class="main-section">
+      <header>
+        State and Lifecycle
+      </header>
+      <article>
+          <p>This is the local state of the component class:</p>
+          <code>
+            &nbsp;class <strong>Clock</strong>  extends React.Component { <br>
+            &nbsp;&nbsp;constructor(props) {   <br> 
+            &nbsp;&nbsp;super(props);    <br>
+            &nbsp;&nbsp; <strong>this.state = {date: new Date()}; </strong><br>
+            &nbsp;} <br>
+            &nbsp;render() { <br>
+            &nbsp;&nbsp;return ( <br>
+            &nbsp;&nbsp;&nbsp;&lt;div&gt; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello, world!&lt;/h1&gt; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;It is {this.state.date.toLocaleTimeString()}.&lt;/h2&gt;  <br>    
+            &nbsp;&nbsp;&nbsp;&lt;/div&gt; <br>
+            &nbsp;&nbsp;&nbsp;); <br>
+            &nbsp;&nbsp;} <br>
+            &nbsp;} <br>
+            <br>
+            &nbsp;ReactDOM.render( <br>
+            &nbsp;&nbsp;&lt;<strong>Clock</strong> /&gt;,  document.getElementById('root') <br>
+            &nbsp;); <br>
+          </code>
+
+          <p>This is the same code but adding Lifecycle methods:</p>
+          <code>
+            &nbsp;class <strong>Clock</strong>  extends React.Component { <br>
+            &nbsp;&nbsp;constructor(props) {   <br> 
+            &nbsp;&nbsp;super(props);    <br>
+            &nbsp;&nbsp; <strong>this.state = {date: new Date()}; </strong><br>
+            &nbsp;} <br>
+            &nbsp;render() { <br>
+            &nbsp;&nbsp;return ( <br>
+            &nbsp;&nbsp;&nbsp;&lt;div&gt; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello, world!&lt;/h1&gt; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;It is {this.state.date.toLocaleTimeString()}.&lt;/h2&gt;  <br>    
+            &nbsp;&nbsp;&nbsp;&lt;/div&gt; <br>
+            &nbsp;&nbsp;&nbsp;); <br>
+            &nbsp;&nbsp;} <br>
+            &nbsp;} <br>
+            <br>
+
+            &nbsp;<strong>componentDidMount()</strong>  { <br>
+            &nbsp;&nbsp;this.timerID = setInterval( <br>
+            &nbsp;&nbsp;&nbsp;() =&gt; this.tick(), <br>
+            &nbsp;&nbsp;&nbsp;1000 <br>
+            &nbsp;&nbsp;); <br>
+            &nbsp;} <br>
+            <br>
+            &nbsp;<strong>componentWillUnmount() </strong> { <br>
+            &nbsp;&nbsp;clearInterval(this.timerID); <br>
+            &nbsp;} <br>
+            <br>
+            &nbsp;tick() {    <br> 
+            &nbsp;&nbsp;this.setState({    <br>   
+            &nbsp;&nbsp;&nbsp;date: new Date() <br>
+            &nbsp;&nbsp;});  <br>
+            &nbsp;} <br>
+            <br>
+            &nbsp;ReactDOM.render( <br>
+            &nbsp;&nbsp;&lt;<strong>Clock</strong> /&gt;,  document.getElementById('root') <br>
+            &nbsp;); <br>
+          </code>
+      </article>
+    </section>
+
+    <section id="Handling_Events" class="main-section">
+      <header>
+        Handling Events
+      </header>
+      <article>
+          <p>
+            Handling events with React elements is very similar to handling events on DOM elements. 
+            There are some syntax differences:
+          </p>
+          <ul>
+            <li>React events are named using camelCase, rather than lowercase.</li>
+            <li>With JSX you pass a function as the event handler, rather than a string.</li>
+          </ul>
+          <p>Html</p>
+          <code>
+            &nbsp;&lt;button onclick="activateLasers()"&gt; <br>
+            &nbsp;&nbsp;Activate Lasers <br>
+            &nbsp;&lt;/button&gt; <br>
+          </code>
+
+          <p>React</p>
+          <code>
+            &nbsp;&lt;button onClick={activateLasers}&gt;  <br>
+            &nbsp;&nbsp;Activate Lasers <br>
+            &nbsp;&lt;/button&gt; <br>
+          </code>
+      </article>
+    </section>
+
+    <section id="Conditional_Rendering" class="main-section">
+      <header>
+        Conditional Rendering
+      </header>
+      <article>
+        <p>
+          In React, you can create distinct components that encapsulate behavior you need. Then, 
+          you can render only some of them, depending on the state of your application.
+        </p>
+
+        <code>
+          &nbsp;function <strong>Greeting</strong>(props) { <br>
+          &nbsp;&nbsp;const isLoggedIn = props.isLoggedIn; <br>
+          &nbsp;&nbsp;if (isLoggedIn) {    <br>
+          &nbsp;&nbsp;&nbsp;return <strong>&lt;UserGreeting /&gt;</strong>;   <br>
+          &nbsp;&nbsp;}  <br>
+          &nbsp;&nbsp;return <strong>&lt;GuestGreeting /&gt;</strong>; <br>
+          &nbsp;} <br>
+          
+          &nbsp;ReactDOM.render(  <br>
+          &nbsp;&nbsp;// Try changing to isLoggedIn={true}:  <br>
+          &nbsp;&nbsp;<strong>&lt;Greeting isLoggedIn={false} /&gt;</strong>,  document.getElementById('root') <br>
+          &nbsp;);  <br>
+        </code>
+      </article>
+    </section>
+
+    <section id="Lists_and_Keys" class="main-section">
+      <header>
+        Lists and Keys
+      </header>
+      <article>
+        <p>
+          With react you can build collections of elements and include them in JSX using curly braces {}.
+        </p>
+
+        <code>
+          &nbsp;function <strong>NumberList</strong>(props) {   <br>
+          &nbsp;&nbsp;const numbers = props.numbers;  <br>
+          &nbsp;&nbsp;const <strong>listItems</strong> = numbers.map((number) =&gt;  <br>
+          &nbsp;&nbsp;&nbsp;&lt;li key={number.toString()}&gt;   <br>   
+          &nbsp;&nbsp;&nbsp;&nbsp;{number}  <br>
+          &nbsp;&nbsp;&nbsp;&lt;/li&gt; <br>
+          &nbsp;&nbsp;); <br>
+          &nbsp;&nbsp;return (  <br>
+          &nbsp;&nbsp;<strong>&lt;ul&gt;{listItems}&lt;/ul&gt;</strong><br>
+          &nbsp;&nbsp;);  <br>
+          &nbsp;}  <br>
+          <br>
+          &nbsp;const numbers = [1, 2, 3, 4, 5];  <br>
+          &nbsp;ReactDOM.render(  <br>
+          &nbsp;&nbsp;<strong>&lt;NumberList numbers={numbers} /&gt;</strong>,  <br>
+          &nbsp;&nbsp;document.getElementById('root')   <br>
+          &nbsp;);  <br>
+         <br>
+        </code>
+      </article>
+    </section>
+
+    <section id="Forms" class="main-section">
+      <header>
+        Forms
+      </header>
+      <article>
+        <p>
+          HTML form elements work a little bit differently from other DOM elements in React, 
+          because form elements naturally keep some internal state. For example, this form
+          in plain HTML accepts a single name:
+        </p>
+        <code>
+          &nbsp;&lt;form&gt; <br>
+          &nbsp;&nbsp;&lt;label&gt;  <br>
+          &nbsp;&nbsp;&nbsp;Name:  <br>
+          &nbsp;&nbsp; &lt;input type="text" name="name" /&gt;  <br>
+          &nbsp;&nbsp;&lt;/label&gt;  <br>
+          &nbsp;&nbsp;&lt;input type="submit" value="Submit" /&gt;  <br>
+          &nbsp;&lt;/form&gt;  <br>
+        </code> 
+      </article>
+    </section>
+
+    <section id="Lifting_State_Up" class="main-section">
+      <header>
+        Lifting State Up
+      </header>
+      <article>
+        <p>
+          Often, several components need to reflect the same changing data. 
+          We recommend lifting the shared state up to their closest common ancestor. 
+          Let’s see how this works in action.
+        </p>
+        <code>
+          &nbsp;class <strong>Calculator</strong> extends React.Component { <br>
+          &nbsp;&nbsp;&nbsp;constructor(props) { <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;super(props); <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;this.handleCelsiusChange = this.handleCelsiusChange.bind(this);  <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);  <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong>this.state = {temperature: '', scale: 'c'};</strong><br>
+          &nbsp;&nbsp;&nbsp;} <br>
+            <br>
+          &nbsp;&nbsp; <strong>handleCelsiusChange</strong>(temperature) { <br>
+          &nbsp;&nbsp;&nbsp;this.setState({scale: 'c', temperature});  <br>
+          &nbsp;&nbsp;}  <br>
+            <br>
+          &nbsp;&nbsp; <strong>handleFahrenheitChange</strong>(temperature) { <br>
+          &nbsp;&nbsp;&nbsp;this.setState({scale: 'f', temperature});   <br>
+          &nbsp;&nbsp;} <br>
+          <br>
+          &nbsp;&nbsp;render() {   <br>
+          &nbsp;&nbsp;&nbsp;const scale = this.state.scale;  <br>  
+          &nbsp;&nbsp;&nbsp;const temperature = this.state.temperature;  <br>
+          &nbsp;&nbsp;&nbsp;const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;   <br>  
+          &nbsp;&nbsp;&nbsp;const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;  <br>
+          <br>
+          &nbsp;&nbsp;&nbsp;return (  <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;  <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&lt;TemperatureInput</strong><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale="c"  <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature={celsius}      <br>    
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onTemperatureChange={this.handleCelsiusChange} <strong>/&gt;</strong>   <br>      
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&lt;TemperatureInput</strong><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale="f"  <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature={fahrenheit}     <br>      
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onTemperatureChange={this.handleFahrenheitChange} <strong>/&gt;</strong>    <br>     
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>&lt;BoilingVerdict</strong>   <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;celsius={parseFloat(celsius)} <strong>/&gt;</strong>  <br>   
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;  <br>
+          &nbsp;&nbsp;&nbsp;);  <br>
+          &nbsp;&nbsp;}  <br>
+          &nbsp;}  <br>
+        </code>
+      </article>
+    </section>
+
+    <section id="Composition_vs_Inheritance" class="main-section">
+      <header>
+        Composition vs Inheritance
+      </header>
+      <article>
+        <p>
+          React has a powerful composition model, and we recommend using composition instead of 
+          inheritance to reuse code between components.
+        </p>
+      </article>
+    </section>
+
+    <section id="Thinking_in_React" class="main-section">
+      <header>
+        Thinking in React
+      </header>
+      <article>
+        <p>
+          React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. 
+          It has scaled very well for us at Facebook and Instagram.
+          <br>
+          Start With A Mock:
+        </p>
+        <ul>
+          <li>Step 1: Break The UI Into A Component Hierarchy</li>
+          <li>Step 2: Build A Static Version in React </li>
+          <li>Identify The Minimal (but complete) Representation Of UI State </li>
+          <li>Step 4: Identify Where Your State Should Live </li>
+          <li>Step 5: Add Inverse Data Flow </li>
+        </ul>
+      </article>
+    </section>
+
+  </main>
+
+  
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
